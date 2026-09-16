@@ -3,44 +3,29 @@
 <head>
     <title>My GitHub Website</title>
     <style>
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            display: flex;
-            height: 100vh;
             font-family: Arial, sans-serif;
         }
         
         nav {
-            width: 200px;
             background-color: #333;
             color: white;
-            padding: 20px;
-            overflow-y: auto;
-        }
-        
-        nav h2 {
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-        
-        nav ul {
-            list-style: none;
-        }
-        
-        nav li {
-            margin-bottom: 10px;
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         nav a {
             color: #4da6ff;
             text-decoration: none;
-            display: block;
-            padding: 8px;
+            margin-right: 20px;
+            display: inline-block;
+            padding: 5px 10px;
             border-radius: 4px;
             transition: background-color 0.2s;
         }
@@ -49,68 +34,25 @@
             background-color: #555;
         }
         
-        #content {
-            flex: 1;
-            overflow: auto;
+        main {
+            margin-top: 60px;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
         }
     </style>
 </head>
 <body>
     <nav>
-        <h2>Navigation</h2>
-        <ul id="navList">
-            <li><a href="index.html" target="content">Home</a></li>
-        </ul>
+        <a href="index.html">Home</a>
+        <a href="Canto-7-9-Exam-By-Person.html">Canto 7-9 By Person</a>
+        <a href="Canto-10-Exam-By-Person.html">Canto 10 By Person</a>
     </nav>
     
-    <iframe id="content" name="content"></iframe>
-    
-    <script>
-        // Find all .Person.html files and add them to navigation
-        const navList = document.getElementById('navList');
-        
-        // Array to store found Person files
-        const personFiles = [];
-        
-        // Search for .Person.html files in the repository
-        // This will look for common naming patterns
-        const possibleNames = [
-            'John.Person.html',
-            'Jane.Person.html',
-            'Alice.Person.html',
-            'Bob.Person.html',
-            'Charlie.Person.html',
-            'Diana.Person.html',
-            'Eve.Person.html',
-            'Frank.Person.html'
-        ];
-        
-        // Function to check if file exists and add to nav
-        async function checkAndAddFile(filename) {
-            try {
-                const response = await fetch(filename, { method: 'HEAD' });
-                if (response.ok) {
-                    const displayName = filename.replace('.Person.html', '');
-                    const li = document.createElement('li');
-                    const a = document.createElement('a');
-                    a.href = filename;
-                    a.textContent = displayName;
-                    a.target = 'content';
-                    li.appendChild(a);
-                    navList.appendChild(li);
-                }
-            } catch (error) {
-                // File doesn't exist, skip
-            }
-        }
-        
-        // Check for all possible Person files
-        possibleNames.forEach(filename => {
-            checkAndAddFile(filename);
-        });
-        
-        // Set default content
-        document.getElementById('content').src = 'index.html';
-    </script>
+    <main>
+        <h1>Hello, world! Welcome to my site.</h1>
+    </main>
 </body>
 </html>
