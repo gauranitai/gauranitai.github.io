@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canto 11–12 Summative Exam — My Questions</title>
+<style>
+  :root{
+    --bg:#f7f4ee;
+    --card:#ffffff;
+    --ink:#2b2420;
+    --sub:#6b6055;
+    --line:#e4ddd0;
+    --accent:#8a3b2e;
+    --accent-soft:#f3e2dc;
+
+    --hd:#8a3b2e;
+    --hd-soft:#f6e3de;
+    --rkd:#3b5e4b;
+    --rkd-soft:#e2ece4;
+    --srdd:#2e5a8a;
+    --srdd-soft:#dde8f4;
+    --snad:#8a6d2e;
+    --snad-soft:#f4ecdc;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  header{
+    padding:2.2rem 1.5rem 1.4rem;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#fffdf9,var(--bg));
+  }
+  header h1{
+    margin:0 0 .3rem;
+    font-size:1.7rem;
+    letter-spacing:.02em;
+  }
+  header p.meta{
+    margin:.2rem 0 0;
+    color:var(--sub);
+    font-size:.95rem;
+    font-style:italic;
+  }
+
+  .layout{
+    max-width:1100px;
+    margin:0 auto;
+    padding:1.6rem 1.2rem 4rem;
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:1.8rem;
+  }
+  @media (max-width: 780px){
+    .layout{grid-template-columns:1fr;}
+  }
+
+  /* Sidebar */
+  .sidebar{
+    position:sticky;
+    top:1rem;
+    align-self:start;
+  }
+  .sidebar h2{
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:.09em;
+    color:var(--sub);
+    margin:0 0 .6rem;
+    font-weight:600;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  .person-btn{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    text-align:left;
+    padding:.65rem .8rem;
+    margin-bottom:.5rem;
+    border-radius:10px;
+    border:1.5px solid var(--line);
+    background:var(--card);
+    cursor:pointer;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.95rem;
+    font-weight:600;
+    color:var(--ink);
+    transition:.15s ease;
+  }
+  .person-btn .count{
+    font-weight:400;
+    font-size:.78rem;
+    color:var(--sub);
+    background:var(--bg);
+    padding:.1rem .5rem;
+    border-radius:20px;
+  }
+  .person-btn:hover{ transform:translateY(-1px); box-shadow:0 3px 10px rgba(0,0,0,.06); }
+  .person-btn.active{ color:#fff; border-color:transparent; }
+  .person-btn[data-person="ALL"].active{ background:var(--accent); }
+  .person-btn[data-person="HD"].active{ background:var(--hd); }
+  .person-btn[data-person="RKD"].active{ background:var(--rkd); }
+  .person-btn[data-person="SRDD"].active{ background:var(--srdd); }
+  .person-btn[data-person="SNAD"].active{ background:var(--snad); }
+  .person-btn.active .count{ background:rgba(255,255,255,.25); color:#fff; }
+
+  .dot{
+    display:inline-block;
+    width:.6rem; height:.6rem;
+    border-radius:50%;
+    margin-right:.5rem;
+    vertical-align:middle;
+  }
+  .dot.HD{background:var(--hd);}
+  .dot.RKD{background:var(--rkd);}
+  .dot.SRDD{background:var(--srdd);}
+  .dot.SNAD{background:var(--snad);}
+
+  .sidebar-note{
+    margin-top:1.2rem;
+    font-size:.8rem;
+    color:var(--sub);
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.5;
+  }
+
+  .exam-note{
+    max-width:1100px;
+    margin:1.3rem auto 0;
+    padding:0 1.2rem;
+  }
+  .exam-note-inner{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:.9rem 1.1rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.85rem;
+    color:var(--sub);
+    line-height:1.6;
+  }
+  .exam-note-inner strong{ color:var(--ink); }
+
+  /* Main */
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin-bottom:1.4rem;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1rem;
+  }
+  .tab-btn{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    padding:.5rem 1rem;
+    border-radius:999px;
+    border:1.5px solid var(--line);
+    background:var(--card);
+    cursor:pointer;
+    font-size:.88rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .tab-btn.active{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+
+  .section-block{ display:none; }
+  .section-block.active{ display:block; }
+  .section-title{
+    font-size:1.25rem;
+    margin:0 0 .2rem;
+  }
+  .section-sub{
+    color:var(--sub);
+    font-size:.88rem;
+    margin:0 0 1.2rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+
+  .q-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:5px solid var(--line);
+    border-radius:10px;
+    padding:1rem 1.2rem;
+    margin-bottom:.9rem;
+    box-shadow:0 1px 3px rgba(30,20,10,.04);
+  }
+  .q-card.HD{ border-left-color:var(--hd); }
+  .q-card.RKD{ border-left-color:var(--rkd); }
+  .q-card.SRDD{ border-left-color:var(--srdd); }
+  .q-card.SNAD{ border-left-color:var(--snad); }
+
+  .q-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:.8rem;
+    margin-bottom:.4rem;
+  }
+  .q-num{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.78rem;
+    color:var(--sub);
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .badge{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.03em;
+    padding:.22rem .6rem;
+    border-radius:999px;
+    white-space:nowrap;
+    cursor:pointer;
+    border:none;
+  }
+  .badge.HD{ background:var(--hd-soft); color:var(--hd); }
+  .badge.RKD{ background:var(--rkd-soft); color:var(--rkd); }
+  .badge.SRDD{ background:var(--srdd-soft); color:var(--srdd); }
+  .badge.SNAD{ background:var(--snad-soft); color:var(--snad); }
+
+  .q-text{ font-size:.97rem; margin:0; }
+  .sub-list{ margin:.5rem 0 0 1.2rem; padding:0; font-size:.93rem; color:var(--ink); }
+  .sub-list li{ margin-bottom:.25rem; }
+
+  .my-questions-banner{
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    background:var(--accent-soft);
+    border:1px solid var(--accent);
+    border-radius:10px;
+    padding:.7rem 1rem;
+    margin-bottom:1.2rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.9rem;
+  }
+  .my-questions-banner strong{ color:var(--accent); }
+
+  .section-empty{
+    color:var(--sub);
+    font-size:.9rem;
+    font-style:italic;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+
+  .site-nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:.5rem 1rem;
+    padding:.7rem 1.2rem;
+    background:#2b2420;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.85rem;
+  }
+  .site-nav-home{
+    color:#f7f4ee;
+    text-decoration:none;
+    font-weight:700;
+    letter-spacing:.02em;
+    opacity:.95;
+  }
+  .site-nav-home:hover{ opacity:1; text-decoration:underline; }
+  .site-nav-links{
+    display:flex;
+    gap:1.1rem;
+    flex-wrap:wrap;
+  }
+  .site-nav-links a{
+    color:#f7f4ee;
+    text-decoration:none;
+    opacity:.75;
+  }
+  .site-nav-links a:hover{ opacity:1; text-decoration:underline; }
+  .site-nav-current{
+    color:#f7f4ee;
+    opacity:1;
+    font-weight:700;
+    border-bottom:2px solid #c97b5a;
+    padding-bottom:1px;
+  }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="index.html" class="site-nav-home">&#9776; All Modules</a>
+  <span class="site-nav-links">
+    <a href="Canto-7-9-Exam-By-Person.html">Canto 7–9</a>
+    <a href="Canto-10-Exam-By-Person.html">Canto 10</a>
+    <span class="site-nav-current">Canto 11–12</span>
+    <a href="Bhaktivedanta-Thematic-By-Person.html">Thematic</a>
+  </span>
+</nav>
+
+<header>
+  <h1>Canto 11–12 Summative Exam</h1>
+  <p class="meta">Select a name to see only their questions, or choose "All" to see everyone's</p>
+</header>
+
+<div class="exam-note">
+  <div class="exam-note-inner">
+    <strong>Exam format:</strong> 11 questions are drawn from the bank below; you will answer 6, each about 400 words (3–4 paragraphs), referencing the specific section(s) of Srimad Bhagavatam discussed (and, optionally, earlier sections of Srimad Bhagavatam and the Bhaktisastras).
+    Per the exam instructions: <strong>Canto 11</strong> — 3 of 6 · <strong>Canto 12</strong> — 3 of 5. Time limit: 3 hours.
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Show questions for</h2>
+    <button class="person-btn" data-person="ALL"><span>Everyone</span><span class="count"></span></button>
+    <button class="person-btn" data-person="HD"><span><span class="dot HD"></span>HD</span><span class="count"></span></button>
+    <button class="person-btn" data-person="RKD"><span><span class="dot RKD"></span>RKD</span><span class="count"></span></button>
+    <button class="person-btn" data-person="SRDD"><span><span class="dot SRDD"></span>SRDD</span><span class="count"></span></button>
+    <button class="person-btn" data-person="SNAD"><span><span class="dot SNAD"></span>SNAD</span><span class="count"></span></button>
+    <p class="sidebar-note">Pick a name to see only that person's questions — everyone else's stay hidden. Pick "Everyone" to see the full bank again.</p>
+  </aside>
+
+  <main>
+    <nav class="tabs" id="tabs"></nav>
+
+    <div class="my-questions-banner" id="myQBanner">
+      <span>Showing only the questions assigned to <strong id="myQName"></strong></span>
+    </div>
+
+    <div id="sections"></div>
+  </main>
+</div>
+
+<script>
+const PEOPLE = ["HD","RKD","SRDD","SNAD"];
+
+const DATA = [
+  {
+    key: "canto11",
+    label: "Canto 11",
+    sub: "10 questions in the bank",
+    questions: [
+      "Analyse Canto 11 into chapter groupings based upon major topics, and explain the connection between Cantos 10 and 11.",
+      "Describe the incidents surrounding the sages' curse upon the Yadu dynasty, discuss its deeper significance, and explain why Krsna did not counteract the curse.",
+      {
+        text: "Please give us a summary study of the Instructions of the Nine Yogendras — to whom are they talking, their lineage from Lord Brahma, their brothers, their varnas and asramas, and their qualities. Include a discussion of some of the key verses found in their instructions from the following list, and how they are cited in Srimad Bhagavatam and the Bhaktisastras.",
+        subitems: [
+          "evaṁ-vrataḥ sva-priya-nāma-kīrtyā — 11.2.40",
+          "bhaktiḥ pareśānubhavo viraktir — 11.2.4",
+          "śrī-havir uvāca sarva-bhūteṣu yaḥ paśyed — 11.2.45",
+          "īśvare tad-adhīneṣu — 11.2.46",
+          "arcāyām eva haraye — 11.2.47",
+          "tasmād guruṁ prapadyeta — 11.3.21",
+          "kṛṣṇa-varṇaṁ tviṣākṛṣṇaṁ — 11.5.32",
+          "dhyeyaṁ sadā paribhava-ghnam abhīṣṭa-dohaṁ — 11.5.33",
+          "tyaktvā su-dustyaja-surepsita-rājya-lakṣmīṁ — 11.5.34"
+        ]
+      },
+      "Summarize the respective incarnations and the processes of self-realization recommended in the four ages, as mentioned by Śrī Karabhājana to King Nimi in Canto 11, Chapter 5, verses 20–44. Explain the statement sāṅgopāṅgāstra-pārṣadam, found in 11.5.32, and discuss the aspects of Lord Caitanya's incarnation, the kali-yuga-avatāra, which distinguish Him from the others.",
+      "Make a summary study of the prayers of Lord Brahma's associate demigods when they visited the Lord in Dvaraka, as described in 11.6.7–19.",
+      "Discuss the significance of Śrī Prabuddha's instruction to King Nimi in 11.3.21: \u201ctasmād guruṁ prapadyeta jijñāsuḥ śreya uttamam / śābde pare ca niṣṇātaṁ brahmaṇy upaśamāśrayam.\u201d In your response, discuss with specific references how this topic is addressed in the Nectar of Instruction, Bhagavad-gita and Srimad Bhagavatam.",
+      "Explain Lord Krsna's following instruction to Uddhava and give at least three examples from Śrīmad-Bhāgavatam Cantos 1 to 11 which exemplify it: \u201cna sādhayati māṁ yogo na sāṅkhyaṁ dharma uddhava / na svādhyāyas tapas tyāgo yathā bhaktir mamorjitā.\u201d \u201cMy dear Uddhava, the unalloyed devotional service rendered to Me by My devotees brings Me under their control. I cannot be thus controlled by those engaged in mystic yoga, Sāṅkhya philosophy, pious work, Vedic study, austerity or renunciation.\u201d (Śrīmad-Bhāgavatam 11.14.20)",
+      "Briefly summarise Lord Krsna's instructions to Uddhava on varṇāśrama-dharma, as described in Canto 11, Chapters 17 & 18, and discuss their relevance for at least three current topical, moral or social issues in ISKCON.",
+      "Discuss how Krsna's instructions to Uddhava and Arjuna demonstrate their unique personalities and situations in their respective relationships with Krsna. Give specific reference to the Uddhava-gita and the Bhagavad-gita.",
+      "Discuss the application, in ISKCON's multi-guru environment, of Śrī Kṛṣṇa's instruction to Uddhava in Śrīmad-Bhāgavatam 11.17.27: \u201cācāryaṁ māṁ vijānīyān nāvamanyeta karhicit / na martya-buddhyāsūyeta sarva-deva-mayo guruḥ.\u201d \u201cOne should know the ācārya as Myself and never disrespect him in any way. One should not envy him, thinking him an ordinary man, for he is the representative of all the demigods.\u201d"
+    ]
+  },
+  {
+    key: "canto12",
+    label: "Canto 12",
+    sub: "8 questions in the bank",
+    questions: [
+      "Select some of the symptoms of Kali-yuga, as mentioned in Canto 12, Chapter 2, verses 1–16, and give examples of their presence in current society.",
+      "Analyse the principles of religion in the four yugas and how they diminish with the coming of each succeeding age, as described in Chapter 3, verses 18–24. Explain their relevance for ISKCON with reference to Chapter 3 verses 51–52, kaler doṣa-nidhe rājann and kṛte yad dhyāyato viṣṇuṁ.",
+      "Draw lessons relevant for your service of leadership in ISKCON from the Bhumi-gita, Chapter 3.",
+      "Briefly describe Mārkaṇḍeya Ṛṣi's practice of spiritual life and how the Supreme Personality of Godhead personally appeared before him, in the forms of Nara and Nārāyaṇa, as described in Chapter 8. Discuss the relevance of the prayers Mārkaṇḍeya Ṛṣi offers to Nara and Nārāyaṇa for the practitioner of Krsna consciousness.",
+      "Draw lessons for personal and/or preaching application from Mārkaṇḍeya Ṛṣi's vision and experiences, as described in Chapters 8 to 10.",
+      "Reflect on the teachings of Śukadeva Gosvāmī to King Parikshit in Canto 12. How do these teachings encapsulate the essential messages of the Śrīmad Bhāgavatam, and what practical lessons can be derived from them for contemporary spiritual practice?",
+      "Summarise the final instructions of Sukadeva to Parikshit, the departure of Parīkṣit Mahārāja, how the hearing of Srimad Bhagavatam was concluded, and the subsequent occurrences (Chapters 5–6).",
+      "With specific reference to Canto 12, describe the characteristics of the people living in Kali-yuga — for example citizens, leaders, priests, brahmacārīs, gṛhasthas, vānaprasthas, sannyāsīs, women, men, businessmen, etc. Discuss the relevance of these descriptions from Srimad Bhagavatam for the development of ISKCON communities."
+    ]
+  }
+];
+
+// Normalize every question into {text, subitems?} shape.
+DATA.forEach(section => {
+  section.questions = section.questions.map(q => (typeof q === "string") ? { text: q } : q);
+});
+
+// --- Fair assignment across the whole bank -------------------------------
+// Give everyone an equal base share; if the total doesn't divide evenly,
+// the leftover questions go to the people at the BOTTOM of the PEOPLE list
+// first (so here, SNAD would get any extra before SRDD, RKD or HD).
+// The order in which questions receive a person is a simple continuous
+// round-robin, skipping anyone who has already received their full share
+// (which only matters for the last few questions once someone hits quota).
+function assignPeople(sections, people){
+  const total = sections.reduce((sum, s) => sum + s.questions.length, 0);
+  const base = Math.floor(total / people.length);
+  const extra = total % people.length;
+
+  const quota = {};
+  people.forEach(p => quota[p] = base);
+  for (let k = 0; k < extra; k++){
+    quota[people[people.length - 1 - k]] += 1;
+  }
+
+  const remaining = { ...quota };
+  let personIdx = 0;
+  sections.forEach(section => {
+    section.questions.forEach(q => {
+      let tries = 0;
+      while (remaining[people[personIdx % people.length]] <= 0 && tries < people.length){
+        personIdx++; tries++;
+      }
+      const person = people[personIdx % people.length];
+      remaining[person]--;
+      q.person = person;
+      personIdx++;
+    });
+  });
+
+  return quota;
+}
+assignPeople(DATA, PEOPLE);
+
+let activeTab = DATA[0].key;
+let activePerson = "ALL";
+
+const tabsEl = document.getElementById("tabs");
+const sectionsEl = document.getElementById("sections");
+const bannerEl = document.getElementById("myQBanner");
+const bannerName = document.getElementById("myQName");
+
+function personCount(person){
+  let n = 0;
+  DATA.forEach(s => s.questions.forEach(q => { if (q.person === person) n++; }));
+  return n;
+}
+
+function renderTabs(){
+  tabsEl.innerHTML = "";
+  DATA.forEach(section => {
+    const btn = document.createElement("button");
+    btn.className = "tab-btn" + (section.key === activeTab ? " active" : "");
+    btn.textContent = section.label;
+    btn.onclick = () => { activeTab = section.key; render(); };
+    tabsEl.appendChild(btn);
+  });
+}
+
+function renderSections(){
+  sectionsEl.innerHTML = "";
+  DATA.forEach(section => {
+    const block = document.createElement("div");
+    block.className = "section-block" + (section.key === activeTab ? " active" : "");
+
+    const title = document.createElement("h2");
+    title.className = "section-title";
+    title.textContent = section.label;
+    block.appendChild(title);
+
+    const sub = document.createElement("p");
+    sub.className = "section-sub";
+    sub.textContent = section.sub;
+    block.appendChild(sub);
+
+    // In "ALL" mode every question in the section is shown. Otherwise, only
+    // the selected person's questions are ever added to the DOM — everyone
+    // else's assignments are left out entirely, not just visually hidden.
+    const visible = section.questions
+      .map((q, i) => ({ q, num: i + 1 }))
+      .filter(item => activePerson === "ALL" || item.q.person === activePerson);
+
+    if (visible.length === 0){
+      const empty = document.createElement("p");
+      empty.className = "section-empty";
+      empty.textContent = "No questions assigned to you in this section.";
+      block.appendChild(empty);
+    }
+
+    visible.forEach(({ q, num }) => {
+      const card = document.createElement("div");
+      card.className = "q-card " + q.person;
+
+      const head = document.createElement("div");
+      head.className = "q-head";
+
+      const numEl = document.createElement("span");
+      numEl.className = "q-num";
+      numEl.textContent = section.label + " · Q" + num;
+      head.appendChild(numEl);
+
+      if (activePerson === "ALL"){
+        const badge = document.createElement("button");
+        badge.className = "badge " + q.person;
+        badge.textContent = q.person;
+        badge.onclick = () => togglePerson(q.person);
+        head.appendChild(badge);
+      }
+
+      card.appendChild(head);
+
+      const text = document.createElement("p");
+      text.className = "q-text";
+      text.textContent = q.text;
+      card.appendChild(text);
+
+      if (q.subitems && q.subitems.length){
+        const ul = document.createElement("ul");
+        ul.className = "sub-list";
+        q.subitems.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+        card.appendChild(ul);
+      }
+
+      block.appendChild(card);
+    });
+
+    sectionsEl.appendChild(block);
+  });
+}
+
+function renderSidebar(){
+  document.querySelectorAll(".person-btn").forEach(btn => {
+    const p = btn.dataset.person;
+    btn.querySelector(".count").textContent = (p === "ALL" ? totalCount() : personCount(p)) + " q";
+    btn.classList.toggle("active", activePerson === p);
+  });
+
+  if (activePerson !== "ALL"){
+    bannerEl.style.display = "flex";
+    bannerName.textContent = activePerson;
+  } else {
+    bannerEl.style.display = "none";
+  }
+}
+
+function totalCount(){
+  return DATA.reduce((sum, s) => sum + s.questions.length, 0);
+}
+
+function togglePerson(person){
+  activePerson = person;
+  render();
+}
+
+function render(){
+  renderTabs();
+  renderSections();
+  renderSidebar();
+}
+
+document.querySelectorAll(".person-btn").forEach(btn => {
+  btn.addEventListener("click", () => togglePerson(btn.dataset.person));
+});
+
+render();
+</script>
+
+</body>
+</html>

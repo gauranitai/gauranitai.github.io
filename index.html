@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summative Exams — Module Index</title>
+<style>
+  :root{
+    --bg:#f7f4ee;
+    --card:#ffffff;
+    --ink:#2b2420;
+    --sub:#6b6055;
+    --line:#e4ddd0;
+    --accent:#8a3b2e;
+
+    --c1:#8a3b2e; --c1-soft:#f6e3de;
+    --c2:#3b5e4b; --c2-soft:#e2ece4;
+    --c3:#2e5a8a; --c3-soft:#dde8f4;
+    --c4:#8a6d2e; --c4-soft:#f4ecdc;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.5;
+  }
+
+  .site-nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:.5rem 1rem;
+    padding:.7rem 1.2rem;
+    background:#2b2420;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.85rem;
+  }
+  .site-nav-home{
+    color:#f7f4ee;
+    text-decoration:none;
+    font-weight:700;
+    letter-spacing:.02em;
+    opacity:.95;
+  }
+  .site-nav-links{
+    display:flex;
+    gap:1.1rem;
+    flex-wrap:wrap;
+  }
+  .site-nav-links a{
+    color:#f7f4ee;
+    text-decoration:none;
+    opacity:.75;
+  }
+  .site-nav-links a:hover{ opacity:1; text-decoration:underline; }
+  .site-nav-current{
+    color:#f7f4ee;
+    opacity:1;
+    font-weight:700;
+    border-bottom:2px solid #c97b5a;
+    padding-bottom:1px;
+  }
+
+  header{
+    padding:2.6rem 1.5rem 1.6rem;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#fffdf9,var(--bg));
+  }
+  header h1{
+    margin:0 0 .4rem;
+    font-size:1.9rem;
+    letter-spacing:.02em;
+  }
+  header p.meta{
+    margin:0;
+    color:var(--sub);
+    font-size:1rem;
+    font-style:italic;
+  }
+
+  .grid{
+    max-width:920px;
+    margin:0 auto;
+    padding:2.2rem 1.2rem 4rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.3rem;
+  }
+  @media (max-width: 700px){
+    .grid{ grid-template-columns:1fr; }
+  }
+
+  .module-card{
+    display:flex;
+    flex-direction:column;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-top:5px solid var(--accent-color, var(--accent));
+    border-radius:12px;
+    padding:1.4rem 1.5rem 1.5rem;
+    text-decoration:none;
+    color:var(--ink);
+    box-shadow:0 1px 3px rgba(30,20,10,.05);
+    transition:.15s ease;
+  }
+  .module-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(30,20,10,.09);
+  }
+  .module-card.c1{ --accent-color:var(--c1); }
+  .module-card.c2{ --accent-color:var(--c2); }
+  .module-card.c3{ --accent-color:var(--c3); }
+  .module-card.c4{ --accent-color:var(--c4); }
+
+  .module-eyebrow{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-bottom:.5rem;
+  }
+  .module-card.c1 .module-eyebrow{ color:var(--c1); }
+  .module-card.c2 .module-eyebrow{ color:var(--c2); }
+  .module-card.c3 .module-eyebrow{ color:var(--c3); }
+  .module-card.c4 .module-eyebrow{ color:var(--c4); }
+
+  .module-title{
+    font-size:1.3rem;
+    margin:0 0 .5rem;
+  }
+  .module-desc{
+    color:var(--sub);
+    font-size:.95rem;
+    margin:0 0 1.1rem;
+    flex-grow:1;
+  }
+  .module-meta{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.78rem;
+    color:var(--sub);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:.9rem;
+    border-top:1px solid var(--line);
+  }
+  .module-open{
+    font-weight:700;
+  }
+  .module-card.c1 .module-open{ color:var(--c1); }
+  .module-card.c2 .module-open{ color:var(--c2); }
+  .module-card.c3 .module-open{ color:var(--c3); }
+  .module-card.c4 .module-open{ color:var(--c4); }
+
+  footer{
+    text-align:center;
+    padding:0 1.2rem 3rem;
+    color:var(--sub);
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.8rem;
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <span class="site-nav-home">&#9776; All Modules</span>
+  <span class="site-nav-links">
+    <a href="Canto-7-9-Exam-By-Person.html">Canto 7–9</a>
+    <a href="Canto-10-Exam-By-Person.html">Canto 10</a>
+    <a href="Canto-11-12-Exam-By-Person.html">Canto 11–12</a>
+    <a href="Bhaktivedanta-Thematic-By-Person.html">Thematic</a>
+  </span>
+</nav>
+
+<header>
+  <h1>Summative Exam Question Bank</h1>
+  <p class="meta">Four modules · pick one below to browse or filter questions by person</p>
+</header>
+
+<div class="grid">
+
+  <a class="module-card c1" href="Canto-7-9-Exam-By-Person.html">
+    <div class="module-eyebrow">Module 1</div>
+    <h2 class="module-title">Canto 7–9</h2>
+    <p class="module-desc">Question bank covering Canto 7, Canto 8, Canto 9, and a combined Cantos 7–9 thematic section.</p>
+    <div class="module-meta">
+      <span>44 questions · 4 sections</span>
+      <span class="module-open">Open module →</span>
+    </div>
+  </a>
+
+  <a class="module-card c2" href="Canto-10-Exam-By-Person.html">
+    <div class="module-eyebrow">Module 2</div>
+    <h2 class="module-title">Canto 10</h2>
+    <p class="module-desc">General questions, Vraja-lila (Ch. 1–40), Mathura &amp; Dwarka-lila (Ch. 41–90), and NoD &amp; NoI consolidation.</p>
+    <div class="module-meta">
+      <span>17 questions · 4 sections</span>
+      <span class="module-open">Open module →</span>
+    </div>
+  </a>
+
+  <a class="module-card c3" href="Canto-11-12-Exam-By-Person.html">
+    <div class="module-eyebrow">Module 3</div>
+    <h2 class="module-title">Canto 11–12</h2>
+    <p class="module-desc">Question bank covering Canto 11 and Canto 12, including the Nine Yogendras' instructions and Kali-yuga themes.</p>
+    <div class="module-meta">
+      <span>18 questions · 2 sections</span>
+      <span class="module-open">Open module →</span>
+    </div>
+  </a>
+
+  <a class="module-card c4" href="Bhaktivedanta-Thematic-By-Person.html">
+    <div class="module-eyebrow">Module 4</div>
+    <h2 class="module-title">Bhaktivedanta Thematic</h2>
+    <p class="module-desc">Cross-canto thematic questions on the Bhaktivedanta summative assessment — Srimad Bhagavatam and the Bhaktisastras.</p>
+    <div class="module-meta">
+      <span>21 questions · 1 section</span>
+      <span class="module-open">Open module →</span>
+    </div>
+  </a>
+
+</div>
+
+<footer>
+  Each module lets you pick a person's name to see only their questions, or choose "Everyone" to see the full bank. Use the bar at the top of any module to jump straight to another.
+</footer>
+
+</body>
+</html>

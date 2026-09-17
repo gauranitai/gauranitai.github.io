@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhaktivedanta Thematic Exam — My Questions</title>
+<style>
+  :root{
+    --bg:#f7f4ee;
+    --card:#ffffff;
+    --ink:#2b2420;
+    --sub:#6b6055;
+    --line:#e4ddd0;
+    --accent:#8a3b2e;
+    --accent-soft:#f3e2dc;
+
+    --hd:#8a3b2e;
+    --hd-soft:#f6e3de;
+    --rkd:#3b5e4b;
+    --rkd-soft:#e2ece4;
+    --srdd:#2e5a8a;
+    --srdd-soft:#dde8f4;
+    --snad:#8a6d2e;
+    --snad-soft:#f4ecdc;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  header{
+    padding:2.2rem 1.5rem 1.4rem;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#fffdf9,var(--bg));
+  }
+  header h1{
+    margin:0 0 .3rem;
+    font-size:1.7rem;
+    letter-spacing:.02em;
+  }
+  header p.meta{
+    margin:.2rem 0 0;
+    color:var(--sub);
+    font-size:.95rem;
+    font-style:italic;
+  }
+
+  .layout{
+    max-width:1100px;
+    margin:0 auto;
+    padding:1.6rem 1.2rem 4rem;
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:1.8rem;
+  }
+  @media (max-width: 780px){
+    .layout{grid-template-columns:1fr;}
+  }
+
+  /* Sidebar */
+  .sidebar{
+    position:sticky;
+    top:1rem;
+    align-self:start;
+  }
+  .sidebar h2{
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:.09em;
+    color:var(--sub);
+    margin:0 0 .6rem;
+    font-weight:600;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  .person-btn{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    text-align:left;
+    padding:.65rem .8rem;
+    margin-bottom:.5rem;
+    border-radius:10px;
+    border:1.5px solid var(--line);
+    background:var(--card);
+    cursor:pointer;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.95rem;
+    font-weight:600;
+    color:var(--ink);
+    transition:.15s ease;
+  }
+  .person-btn .count{
+    font-weight:400;
+    font-size:.78rem;
+    color:var(--sub);
+    background:var(--bg);
+    padding:.1rem .5rem;
+    border-radius:20px;
+  }
+  .person-btn:hover{ transform:translateY(-1px); box-shadow:0 3px 10px rgba(0,0,0,.06); }
+  .person-btn.active{ color:#fff; border-color:transparent; }
+  .person-btn[data-person="ALL"].active{ background:var(--accent); }
+  .person-btn[data-person="HD"].active{ background:var(--hd); }
+  .person-btn[data-person="RKD"].active{ background:var(--rkd); }
+  .person-btn[data-person="SRDD"].active{ background:var(--srdd); }
+  .person-btn[data-person="SNAD"].active{ background:var(--snad); }
+  .person-btn.active .count{ background:rgba(255,255,255,.25); color:#fff; }
+
+  .dot{
+    display:inline-block;
+    width:.6rem; height:.6rem;
+    border-radius:50%;
+    margin-right:.5rem;
+    vertical-align:middle;
+  }
+  .dot.HD{background:var(--hd);}
+  .dot.RKD{background:var(--rkd);}
+  .dot.SRDD{background:var(--srdd);}
+  .dot.SNAD{background:var(--snad);}
+
+  .sidebar-note{
+    margin-top:1.2rem;
+    font-size:.8rem;
+    color:var(--sub);
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.5;
+  }
+
+  .exam-note{
+    max-width:1100px;
+    margin:1.3rem auto 0;
+    padding:0 1.2rem;
+  }
+  .exam-note-inner{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:.9rem 1.1rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.85rem;
+    color:var(--sub);
+    line-height:1.6;
+  }
+  .exam-note-inner strong{ color:var(--ink); }
+
+  /* Main */
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin-bottom:1.4rem;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1rem;
+  }
+  .tab-btn{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    padding:.5rem 1rem;
+    border-radius:999px;
+    border:1.5px solid var(--line);
+    background:var(--card);
+    cursor:pointer;
+    font-size:.88rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .tab-btn.active{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+
+  .section-block{ display:none; }
+  .section-block.active{ display:block; }
+  .section-title{
+    font-size:1.25rem;
+    margin:0 0 .2rem;
+  }
+  .section-sub{
+    color:var(--sub);
+    font-size:.88rem;
+    margin:0 0 1.2rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+
+  .q-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:5px solid var(--line);
+    border-radius:10px;
+    padding:1rem 1.2rem;
+    margin-bottom:.9rem;
+    box-shadow:0 1px 3px rgba(30,20,10,.04);
+  }
+  .q-card.HD{ border-left-color:var(--hd); }
+  .q-card.RKD{ border-left-color:var(--rkd); }
+  .q-card.SRDD{ border-left-color:var(--srdd); }
+  .q-card.SNAD{ border-left-color:var(--snad); }
+
+  .q-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:.8rem;
+    margin-bottom:.4rem;
+  }
+  .q-num{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.78rem;
+    color:var(--sub);
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .badge{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.03em;
+    padding:.22rem .6rem;
+    border-radius:999px;
+    white-space:nowrap;
+    cursor:pointer;
+    border:none;
+  }
+  .badge.HD{ background:var(--hd-soft); color:var(--hd); }
+  .badge.RKD{ background:var(--rkd-soft); color:var(--rkd); }
+  .badge.SRDD{ background:var(--srdd-soft); color:var(--srdd); }
+  .badge.SNAD{ background:var(--snad-soft); color:var(--snad); }
+
+  .q-text{ font-size:.97rem; margin:0; }
+  .sub-list{ margin:.5rem 0 0 1.2rem; padding:0; font-size:.93rem; color:var(--ink); }
+  .sub-list li{ margin-bottom:.25rem; }
+
+  .my-questions-banner{
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    background:var(--accent-soft);
+    border:1px solid var(--accent);
+    border-radius:10px;
+    padding:.7rem 1rem;
+    margin-bottom:1.2rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.9rem;
+  }
+  .my-questions-banner strong{ color:var(--accent); }
+
+  .section-empty{
+    color:var(--sub);
+    font-size:.9rem;
+    font-style:italic;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+
+  .site-nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:.5rem 1rem;
+    padding:.7rem 1.2rem;
+    background:#2b2420;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:.85rem;
+  }
+  .site-nav-home{
+    color:#f7f4ee;
+    text-decoration:none;
+    font-weight:700;
+    letter-spacing:.02em;
+    opacity:.95;
+  }
+  .site-nav-home:hover{ opacity:1; text-decoration:underline; }
+  .site-nav-links{
+    display:flex;
+    gap:1.1rem;
+    flex-wrap:wrap;
+  }
+  .site-nav-links a{
+    color:#f7f4ee;
+    text-decoration:none;
+    opacity:.75;
+  }
+  .site-nav-links a:hover{ opacity:1; text-decoration:underline; }
+  .site-nav-current{
+    color:#f7f4ee;
+    opacity:1;
+    font-weight:700;
+    border-bottom:2px solid #c97b5a;
+    padding-bottom:1px;
+  }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="index.html" class="site-nav-home">&#9776; All Modules</a>
+  <span class="site-nav-links">
+    <a href="Canto-7-9-Exam-By-Person.html">Canto 7–9</a>
+    <a href="Canto-10-Exam-By-Person.html">Canto 10</a>
+    <a href="Canto-11-12-Exam-By-Person.html">Canto 11–12</a>
+    <span class="site-nav-current">Thematic</span>
+  </span>
+</nav>
+
+<header>
+  <h1>Bhaktivedanta Summative Assessment — Thematic Questions</h1>
+  <p class="meta">Select a name to see only their questions, or choose "All" to see everyone's</p>
+</header>
+
+<div class="exam-note">
+  <div class="exam-note-inner">
+    <strong>Exam format:</strong> 10 questions are drawn from the bank below; you will answer 6, each about 400 words (3–4 paragraphs). Specific references to the Bhaktisastra books and Srimad Bhagavatam are mandatory in every response. Time limit: 3 hours.
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Show questions for</h2>
+    <button class="person-btn" data-person="ALL"><span>Everyone</span><span class="count"></span></button>
+    <button class="person-btn" data-person="HD"><span><span class="dot HD"></span>HD</span><span class="count"></span></button>
+    <button class="person-btn" data-person="RKD"><span><span class="dot RKD"></span>RKD</span><span class="count"></span></button>
+    <button class="person-btn" data-person="SRDD"><span><span class="dot SRDD"></span>SRDD</span><span class="count"></span></button>
+    <button class="person-btn" data-person="SNAD"><span><span class="dot SNAD"></span>SNAD</span><span class="count"></span></button>
+    <p class="sidebar-note">Pick a name to see only that person's questions — everyone else's stay hidden. Pick "Everyone" to see the full bank again.</p>
+  </aside>
+
+  <main>
+    <nav class="tabs" id="tabs"></nav>
+
+    <div class="my-questions-banner" id="myQBanner">
+      <span>Showing only the questions assigned to <strong id="myQName"></strong></span>
+    </div>
+
+    <div id="sections"></div>
+  </main>
+</div>
+
+<script>
+const PEOPLE = ["HD","RKD","SRDD","SNAD"];
+
+const DATA = [
+  {
+    key: "thematic",
+    label: "Thematic Questions",
+    sub: "21 questions in the bank",
+    questions: [
+      "Srila Prabhupada begins his commentary on Srimad Bhagavatam with the statement, \u201cWe must know the present need of human society\u201d (Preface). Explain the present need of human society and how Srimad Bhagavatam can fulfil it, with reference to appropriate verses and at least 3 incidents from Srimad Bhagavatam. In your response discuss the significance of Srila Prabhupada beginning his commentary with this statement and how it reflects his mission.",
+      "Explain how Krsna is the Supreme Personality of Godhead, with reference to appropriate incidents and verses from the Srimad Bhagavatam and Bhagavad-gita.",
+      "Explain how Krsna is the Supreme Personality of Godhead, with reference to Canto 1, Chapter 3, verse 2, and verses from the Bhagavad-gita and Brahma-samhita.",
+      "Explain Catur-sloki Bhagavatam with reference to the essential Vaishnava philosophical conclusions and relevant verses of Srimad Bhagavatam, the Bhagavad-gita and Brahma-samhita.",
+      "Give an overview of the Srimad Bhagavatam, summarising its main sections and how they connect. In your response include reference to key verses from Srimad Bhagavatam.",
+      "Give an overview of any Canto of the Srimad Bhagavatam, summarising its main sections and how they connect, with reference to key verses from the selected Canto.",
+      "Explain the statement \u201cdharmaḥ projjhita-kaitavo 'tra paramo\u201d (Srimad Bhagavatam 1.1.2), giving examples of kaitava-dharmaḥ faced by Srila Prabhupada in his missionary activities. Give reference to appropriate verses and events given in Srimad Bhagavatam. Include reference to the Bhaktisastras in your response.",
+      "Explain the following verse from Lord Krsna's instructions to Uddhava, and give at least 3 examples from Śrīmad-Bhāgavatam which exemplify its conclusion: \u201cna sādhayati māṁ yogo na sāṅkhyaṁ dharma uddhava / na svādhyāyas tapas tyāgo yathā bhaktir mamorjitā.\u201d \u201cMy dear Uddhava, the unalloyed devotional service rendered to Me by My devotees brings Me under their control. I cannot be thus controlled by those engaged in mystic yoga, Sāṅkhya philosophy, pious work, Vedic study, austerity or renunciation.\u201d (Śrīmad-Bhāgavatam 11.14.20)",
+      "Srila Prabhupada writes in the purport to 1.9.9, regarding Bhismadeva's reception of the Pandavas whilst he lay on the battlefield of Kurukshetra: \u201cAll the great acaryas or religious preachers or reformers of the world executed their mission by adjustment of religious principles in terms of time and place. There are different climates and situations in different parts of the world, and if one has to discharge his duties to preach the message of the Lord, he must be expert in adjusting things in terms of the time and place.\u201d Give three examples of Srila Prabhupada's expert adjustment of religious principles, explaining why he made such adjustments with supportive evidence from the Srimad Bhagavatam and the Bhaktisastras in your response.",
+      "Sri Krsna states in Bhagavad-gita 2.42–44: \u201cMen of small knowledge are very much attached to the flowery words of the Vedas... In the minds of those who are too attached to sense enjoyment and material opulence, and who are bewildered by such things, the resolute determination for devotional service to the Supreme Lord does not take place.\u201d Discuss at least three incidents from Srimad Bhagavatam illustrating these statements, with reference to relevant Srimad Bhagavatam verses.",
+      "Explain Siva-tattva (the position of Lord Siva) and draw lessons from Lord Siva's behaviour and pastimes as described in Srimad Bhagavatam. Give reference to appropriate verses and statements from Srimad Bhagavatam in your response.",
+      "Discuss the application, in ISKCON's multi-guru environment, of Śrī Kṛṣṇa's instruction to Uddhava in Śrīmad-Bhāgavatam 11.17.27: \u201cācāryaṁ māṁ vijānīyān nāvamanyeta karhicit / na martya-buddhyāsūyeta sarva-deva-mayo guruḥ.\u201d \u201cOne should know the ācārya as Myself and never disrespect him in any way. One should not envy him, thinking him an ordinary man, for he is the representative of all the demigods.\u201d",
+      "Summarise the preaching of Sri Narada Muni found in Srimad Bhagavatam, and draw points relevant for preaching Krsna consciousness in modern times, with reference to at least three specific pastimes.",
+      "Draw strategic guidelines for preaching according to time, place and circumstance, from the examples of Nārada Muni with Dakṣa's sons, Angira with Citraketu, and Jaḍa Bharata with Rahūgaṇa. Give reference to specific verses from Srimad Bhagavatam and the Bhaktisastras in your response.",
+      "Discuss some of the symptoms of Kali-yuga, as mentioned in Canto 12 of Srimad Bhagavatam, and evaluate how they are being reduced by the advancement of the Krsna Consciousness movement. Give reference to specific verses from Canto 12 of Srimad Bhagavatam and the Bhaktisastras in your response.",
+      "Explain the four classes of pious persons who surrender to the Lord, as described in Bhagavad-gita Chapter 4, and give examples of each from Srimad Bhagavatam.",
+      "Identify aspects of Vaisnava culture and behaviour you consider particularly relevant for ISKCON, with specific reference to at least three incidents from Srimad Bhagavatam. Discuss why these aspects of Vaisnava culture are important for ISKCON in its current stage of development.",
+      "Srila Prabhupada writes in the purport to 5.9.19: \u201cThe Kṛṣṇa consciousness movement, however, is being propagated all over the world to reestablish the varṇāśrama-dharma system and thus save human society from gliding down to hellish life.\u201d Discuss the significance of this statement for the Krsna Consciousness movement, with reference to appropriate verses from Srimad Bhagavatam and the Bhaktisastras.",
+      {
+        text: "Select stories from Srimad Bhagavatam and explain how they provide useful advice for:",
+        subitems: [
+          "Grhastha-dharma",
+          "Stri-dharma",
+          "Sannyasa-dharma",
+          "Raja-dharma"
+        ]
+      },
+      "Select sections of Srimad Bhagavatam and demonstrate their relevance for preaching to scientists such as physicists, astronomers, and psychologists.",
+      "Select and discuss some prayers from Srimad Bhagavatam which are important for everyone, and some that are significant to you, explaining why you consider them important."
+    ]
+  }
+];
+
+// Normalize every question into {text, subitems?} shape.
+DATA.forEach(section => {
+  section.questions = section.questions.map(q => (typeof q === "string") ? { text: q } : q);
+});
+
+// --- Fair assignment across the whole bank -------------------------------
+// Give everyone an equal base share; if the total doesn't divide evenly,
+// the leftover questions go to the people at the BOTTOM of the PEOPLE list
+// first (so here, SNAD would get any extra before SRDD, RKD or HD).
+// The order in which questions receive a person is a simple continuous
+// round-robin, skipping anyone who has already received their full share
+// (which only matters for the last few questions once someone hits quota).
+function assignPeople(sections, people){
+  const total = sections.reduce((sum, s) => sum + s.questions.length, 0);
+  const base = Math.floor(total / people.length);
+  const extra = total % people.length;
+
+  const quota = {};
+  people.forEach(p => quota[p] = base);
+  for (let k = 0; k < extra; k++){
+    quota[people[people.length - 1 - k]] += 1;
+  }
+
+  const remaining = { ...quota };
+  let personIdx = 0;
+  sections.forEach(section => {
+    section.questions.forEach(q => {
+      let tries = 0;
+      while (remaining[people[personIdx % people.length]] <= 0 && tries < people.length){
+        personIdx++; tries++;
+      }
+      const person = people[personIdx % people.length];
+      remaining[person]--;
+      q.person = person;
+      personIdx++;
+    });
+  });
+
+  return quota;
+}
+assignPeople(DATA, PEOPLE);
+
+let activeTab = DATA[0].key;
+let activePerson = "ALL";
+
+const tabsEl = document.getElementById("tabs");
+const sectionsEl = document.getElementById("sections");
+const bannerEl = document.getElementById("myQBanner");
+const bannerName = document.getElementById("myQName");
+
+function personCount(person){
+  let n = 0;
+  DATA.forEach(s => s.questions.forEach(q => { if (q.person === person) n++; }));
+  return n;
+}
+
+function renderTabs(){
+  tabsEl.innerHTML = "";
+  if (DATA.length < 2) return; // no need for a tab bar with a single section
+  DATA.forEach(section => {
+    const btn = document.createElement("button");
+    btn.className = "tab-btn" + (section.key === activeTab ? " active" : "");
+    btn.textContent = section.label;
+    btn.onclick = () => { activeTab = section.key; render(); };
+    tabsEl.appendChild(btn);
+  });
+}
+
+function renderSections(){
+  sectionsEl.innerHTML = "";
+  DATA.forEach(section => {
+    const block = document.createElement("div");
+    block.className = "section-block" + (section.key === activeTab ? " active" : "");
+
+    const title = document.createElement("h2");
+    title.className = "section-title";
+    title.textContent = section.label;
+    block.appendChild(title);
+
+    const sub = document.createElement("p");
+    sub.className = "section-sub";
+    sub.textContent = section.sub;
+    block.appendChild(sub);
+
+    // In "ALL" mode every question in the section is shown. Otherwise, only
+    // the selected person's questions are ever added to the DOM — everyone
+    // else's assignments are left out entirely, not just visually hidden.
+    const visible = section.questions
+      .map((q, i) => ({ q, num: i + 1 }))
+      .filter(item => activePerson === "ALL" || item.q.person === activePerson);
+
+    if (visible.length === 0){
+      const empty = document.createElement("p");
+      empty.className = "section-empty";
+      empty.textContent = "No questions assigned to you in this section.";
+      block.appendChild(empty);
+    }
+
+    visible.forEach(({ q, num }) => {
+      const card = document.createElement("div");
+      card.className = "q-card " + q.person;
+
+      const head = document.createElement("div");
+      head.className = "q-head";
+
+      const numEl = document.createElement("span");
+      numEl.className = "q-num";
+      numEl.textContent = section.label + " · Q" + num;
+      head.appendChild(numEl);
+
+      if (activePerson === "ALL"){
+        const badge = document.createElement("button");
+        badge.className = "badge " + q.person;
+        badge.textContent = q.person;
+        badge.onclick = () => togglePerson(q.person);
+        head.appendChild(badge);
+      }
+
+      card.appendChild(head);
+
+      const text = document.createElement("p");
+      text.className = "q-text";
+      text.textContent = q.text;
+      card.appendChild(text);
+
+      if (q.subitems && q.subitems.length){
+        const ul = document.createElement("ul");
+        ul.className = "sub-list";
+        q.subitems.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+        card.appendChild(ul);
+      }
+
+      block.appendChild(card);
+    });
+
+    sectionsEl.appendChild(block);
+  });
+}
+
+function renderSidebar(){
+  document.querySelectorAll(".person-btn").forEach(btn => {
+    const p = btn.dataset.person;
+    btn.querySelector(".count").textContent = (p === "ALL" ? totalCount() : personCount(p)) + " q";
+    btn.classList.toggle("active", activePerson === p);
+  });
+
+  if (activePerson !== "ALL"){
+    bannerEl.style.display = "flex";
+    bannerName.textContent = activePerson;
+  } else {
+    bannerEl.style.display = "none";
+  }
+}
+
+function totalCount(){
+  return DATA.reduce((sum, s) => sum + s.questions.length, 0);
+}
+
+function togglePerson(person){
+  activePerson = person;
+  render();
+}
+
+function render(){
+  renderTabs();
+  renderSections();
+  renderSidebar();
+}
+
+document.querySelectorAll(".person-btn").forEach(btn => {
+  btn.addEventListener("click", () => togglePerson(btn.dataset.person));
+});
+
+render();
+</script>
+
+</body>
+</html>
